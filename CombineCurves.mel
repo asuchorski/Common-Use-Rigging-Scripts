@@ -1,0 +1,42 @@
+ffff// Step 1: Store the current selection
+string $originalSelection[] = `ls -selection`;
+
+// Step 2: Create an empty group
+string $emptyGroup = `group -em -n "combinedControl_01"`;
+
+// Step 3: Select the curves, delete history, and freeze transforms
+string $selectedCurves[] = $originalSelection;
+if (size($selectedCurves) < 2) {
+    error "Please select at least two curves for combining.";
+}
+
+select -r $selectedCurves;
+delete -ch;
+makeIdentity -apply true -t 1 -r 1 -s 1 -n 0;
+
+// Step 4: Select the curves' shape nodes and the empty group
+string $selectedShapes[] = {};
+for ($curve in $selectedCurves) {
+    string $curveShapes[] = `listRelatives -shapes $curve`;
+    if (size($curveShapes) > 0) {
+        $selectedShapes = stringArrayCatenate($selectedShapes, $curveShapes);
+    }
+}
+
+if (size($selectedShapes) < 2) {
+    error "Unable to find shape nodes for selected curves.";
+}
+
+select -r $selectedShapes $emptyGroup;
+
+// Step 5: Parent the selected nodes
+parent -r -s;
+
+// Step 6: Center the pivot of the combined curve
+select -r $emptyGroup;
+xform -cp;
+
+// Step 7: Restore the original selection and delete empty groups
+select -r $originalSelection;
+
+delete;
