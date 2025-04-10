@@ -1,7 +1,9 @@
 # Common-Use-Rigging-Scripts
++ ![image missing](Imgs/MiniScripts.png)
 A bunch of scripts that speed up repetitive tasks.
 
 ## SubdivJointChainUI.py :
++ ![image missing](Imgs/SubdivJointChain.png)
 Python script for subdividing joint chain and some extra controls with PyQt UI
 
 ## CombineCurves.mel :
@@ -11,6 +13,7 @@ Mel script for combinig multiple nurbs curves into one
 Python script for moving the rotate values of an object to its offset parent matrix and clearing the default rotate values
 
 ## ControlColourPicker.py : 
++ ![image missing](Imgs/ColourPicker.png)
 Python script with a mini UI for colouring one or multiple nurbs controls
 
 ## CreateOffsetGrp.py : 
@@ -20,6 +23,7 @@ Python script for creating an offset grp with automatic rotations and other hous
 Python script for matching source object to target, transferring rot, trans values and other house keeping
 
 ## storeSelection.py :
++ ![image missing](Imgs/StoreSelection.png)
 Python script with a mini UI to store and load selected objects, vertices, edges, faces etc
 
 ## MovePivotToOrigin.py :
